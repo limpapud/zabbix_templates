@@ -1,6 +1,6 @@
 ### Brief information:
 
-**hikvision_templates** is a zabbix template for Hikvision company NVR's (Network Video Recorder) using SNMPv2. Tested on Zabbix v4.4 and Hikvision NVR 9664-i8
+**hikvision_templates** is a zabbix template for Hikvision company NVR's (Network Video Recorder) using SNMPv2. Tested on Zabbix v4.4 and Hikvision NVR 9664-i8 and 7632 devices.
 
 ### Sources used:
 
@@ -11,21 +11,19 @@
 ###  Information covered by a template:
 
 - Low Level Discovery
-- - *LLD of installed HDD's*
+- - *LLD of installed HDD's statuses*
+- - *LLD of installed HDD's capacity*
+- - *LLD of installed HDD's free space*
 - Triggers
 - - *HDD count change* 
 - - *HDD state change*
 - Items
-- - *Count of installed HDD's*
+- - *Count of installed HDD's* 
+- - *Device uptime*
+- - *Number of NIC*
+- - *Device description*
 - Mappings
 - - *HDD disk state mappings*
-
-### Planned functionality:
-
-- Adding generic SNMP items (NIC interfaces, uptime, product name, e.t.c)
-- LLP of HDD capacity and free space
-- Triggers for free space control
-
 
 Files
 -------------------
@@ -34,7 +32,7 @@ Existing filed and descriptions are as below:
 Main folder:
 
 > - *template_hikvisionNVR.xml* - Zabbix template.
-> - *HIKVISION-MIB.mib* - MIB file from [www.circitor.fr]( http://www.circitor.fr/Mibs/Mib/H/HIKVISION-MIB.mib)
+> - *HIKVISION-MIB.mib* - MIB file from [www.circitor.fr]( http://www.circitor.fr/Mibs/Mib/H/HIKVISION-MIB.mib). You should add this MIB file to MIB folder on your Zabbix installation.
 
 Contributions
 ----------------------
