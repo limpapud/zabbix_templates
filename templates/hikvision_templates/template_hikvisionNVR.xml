@@ -103,7 +103,7 @@
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
                     <snmp_oid>discovery[{#HIKDINDEX}, HIKVISION-MIB::hikDiskIndex,{#HIKVOLUME}, HIKVISION-MIB::hikDiskVolume, {#HIKDISKSTATUS}, HIKVISION-MIB::hikDiskStatus, {#HIKDISKFS},HIKVISION-MIB::hikDiskFreeSpace, {#HIKDISKCAP}, HIKVISION-MIB::hikDiskCapability]</snmp_oid>
                     <key>hikDiskVolume</key>
-                    <delay>30s</delay>
+                    <delay>1h</delay>
                     <item_prototypes>
                         <item_prototype>
                             <name>HDD capability on {#HIKDINDEX}</name>
@@ -113,11 +113,18 @@
                             <key>hikDiskCapability[{#HIKDINDEX}]</key>
                             <delay>12h</delay>
                             <history>30d</history>
+                            <units>B</units>
                             <applications>
                                 <application>
                                     <name>HDD</name>
                                 </application>
                             </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000000</params>
+                                </step>
+                            </preprocessing>
                         </item_prototype>
                         <item_prototype>
                             <name>HDD free space on {#HIKDINDEX}</name>
@@ -127,6 +134,7 @@
                             <key>hikDiskFreeSpace[{#HIKDINDEX}]</key>
                             <delay>3h</delay>
                             <history>30d</history>
+                            <units>B</units>
                             <applications>
                                 <application>
                                     <name>HDD</name>
@@ -135,6 +143,19 @@
                             <valuemap>
                                 <name>Hikvision HDD state mapping</name>
                             </valuemap>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>1000000</params>
+                                </step>
+                            </preprocessing>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last(0)}&lt;50000000000</expression>
+                                    <name>{HOSTNAME}: Free disk space less than 50GB on disk {#HIKDINDEX}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
                             <name>HDD Status on {#HIKDINDEX}</name>
