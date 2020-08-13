@@ -100,7 +100,7 @@
                 <discovery_rule>
                     <name>DIskVolume</name>
                     <type>SNMPV2</type>
-                    <snmp_community>public</snmp_community>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
                     <snmp_oid>discovery[{#HIKDINDEX}, HIKVISION-MIB::hikDiskIndex,{#HIKVOLUME}, HIKVISION-MIB::hikDiskVolume, {#HIKDISKSTATUS}, HIKVISION-MIB::hikDiskStatus, {#HIKDISKFS},HIKVISION-MIB::hikDiskFreeSpace, {#HIKDISKCAP}, HIKVISION-MIB::hikDiskCapability]</snmp_oid>
                     <key>hikDiskVolume</key>
                     <delay>30s</delay>
@@ -108,7 +108,7 @@
                         <item_prototype>
                             <name>HDD capability on {#HIKDINDEX}</name>
                             <type>SNMPV2</type>
-                            <snmp_community>public</snmp_community>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
                             <snmp_oid>HIKVISION-MIB::hikDiskCapability.{#HIKDINDEX}.0</snmp_oid>
                             <key>hikDiskCapability[{#HIKDINDEX}]</key>
                             <delay>12h</delay>
@@ -122,7 +122,7 @@
                         <item_prototype>
                             <name>HDD free space on {#HIKDINDEX}</name>
                             <type>SNMPV2</type>
-                            <snmp_community>public</snmp_community>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
                             <snmp_oid>HIKVISION-MIB::hikDiskFreeSpace.{#HIKDINDEX}.0</snmp_oid>
                             <key>hikDiskFreeSpace[{#HIKDINDEX}]</key>
                             <delay>3h</delay>
@@ -139,7 +139,7 @@
                         <item_prototype>
                             <name>HDD Status on {#HIKDINDEX}</name>
                             <type>SNMPV2</type>
-                            <snmp_community>public</snmp_community>
+                            <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
                             <snmp_oid>HIKVISION-MIB::hikDiskStatus.{#HIKDINDEX}.0</snmp_oid>
                             <key>hikDiskStatus[{#HIKDINDEX}]</key>
                             <delay>30m</delay>
